@@ -31,6 +31,9 @@ class Graph {
             System.out.println(i + " -> " + adj.get(i));
         }
     }
+    public ArrayList<ArrayList<Integer>> getAdj() {
+        return adj;
+    }
 }
 
 // Main.java
@@ -49,5 +52,20 @@ public class main {
 
         System.out.println("Graph Representation:");
         graph.displayGraph();
+        
+        Bfs bredthFirstSearch = new Bfs();
+        dfs depthFirstSearch = new dfs();
+        ArrayList<Integer> bfsResult = bredthFirstSearch.bfsOfGraph(N, graph.getAdj());
+        ArrayList<Integer> dfsResult = depthFirstSearch.dfsOfGraph(graph.getAdj());
+
+        System.out.println("BFS Traversal:");
+        for (int node : bfsResult) {
+            System.out.print(node + " ");
+        }
+        System.out.println();
+        System.out.println("DFS Traversal:");
+        for (int node : dfsResult) {
+            System.out.print(node + " ");
+        }
     }
 }
