@@ -1,33 +1,53 @@
 import java.util.*;
-import java.util.List;
+// Node.java
+class Node {
+    int data;
 
-public class main {
-       static class Node {
-        int data;
-        Node(int data) {
-            this.data = data;
-        }
+    Node(int data) {
+        this.data = data;
     }
+}
 
-    public static void main(String[] args) {
-        Bfs bfs = new Bfs();
-        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-        int N = 5;
+class Graph {
+    ArrayList<ArrayList<Integer>> adj;
+    int N;
+
+    public Graph(int N) {
+        this.N = N;
+        adj = new ArrayList<>();
 
         // Initialize adjacency list
         for (int i = 0; i <= N; i++) {
             adj.add(new ArrayList<>());
         }
+    }
 
-        adj.get(1).add(2);
-        adj.get(1).add(3);
-        adj.get(2).add(4);
-        adj.get(3).add(4);
-        adj.get(3).add(5);
-        adj.get(4).add(5);
-        
-        // Call bfs method
-        List<Integer> result = bfs.bfs(N, adj, 1);
-        System.out.println(result);
+    public void addEdge(int u, int v) {
+        adj.get(u).add(v);
+    }
+
+    public void displayGraph() {
+        for (int i = 1; i <= N; i++) {
+            System.out.println(i + " -> " + adj.get(i));
+        }
+    }
+}
+
+// Main.java
+public class main {
+    public static void main(String[] args) {
+        int N = 5;
+        Graph graph = new Graph(N);
+
+        graph.addEdge(1, 2);
+        graph.addEdge(1, 3);
+        graph.addEdge(2, 4);
+        graph.addEdge(3, 4);
+        graph.addEdge(3, 5);
+        graph.addEdge(4, 5);
+        graph.addEdge(5, 1);
+
+        System.out.println("Graph Representation:");
+        graph.displayGraph();
     }
 }
