@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class noOfIslands {
     public void dfs(int row, int col, boolean[][] visited, char[][] grid) {
         int n = grid.length;
